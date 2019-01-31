@@ -117,52 +117,46 @@ def ReturnFruitsBeginWithP(List1):
 # perform tasks
 #-- Presentation (Input/Output) --#
 
-# # Output
-# print("\n\n\n******************************* SERIES 1 *************************************************************")
-# # Display the list.
-# print("Your current list of fruit is: ", origList)
-#
-# # get user input
-# newFruit = input("Please add another fruit to the list. ")
-# print("The fruit "+newFruit+" has been added the end of the list, but not saved.\n",
-#       AddFruitEndOfList(origList, newFruit))
-#
-# fruitNumber = input("Starting from the Left, count the fruit from 1 to n."
-#                     "Then enter the number of your 'choice' fruit. ")
-# print("Number "+fruitNumber+" is a: ", FruitByIndex(origList,fruitNumber))
-# print("The fruit "+newFruit+" has been added to the beginning of the list using a plus sign, but has not been saved.",
-#       NewFruitBegin(origList, newFruit))
-# print("The fruit "+newFruit+" has been added to the beginning of the list using insert, but has not been saved. ",
-#       AddFruitUsingInsert(origList, newFruit))
-# print("The following fruits begin with the letter 'p'.\n", ReturnFruitsBeginWithP(origList))
-#
-# print("\n\n\n*******************************  SERIES 2  *************************************************************")
-# # Display the list
-# print(origList)
-# # copy the list for series two.
-# origListSeries2 = origList
-# # remove last item on the list
-# origListSeries2.remove('Peaches')
-# # Display the list
-# print(origListSeries2)
-# origListSeries2.remove(input("enter a fruit from the list to remove: "))
-# print(origListSeries2)
-# print("\n\n\n*******************************  SERIES 3  *************************************************************")
-# # creating the like list
-#
-# likeFruitsList = origList
-# for items in likeFruitsList[:]: # https://docs.python.org/3/reference/compound_stmts.html seen note in 8.3. temp slice!
-#     fruitQuestion = input("Do you like, " + items.lower() + " yes/no?")
-#     if fruitQuestion.lower() == "no":
-#         likeFruitsList.remove(items)
-#         continue
-#     elif fruitQuestion.lower() == "yes":
-#         continue
-#     else:
-#         print("Not a valid Entry")
-#
-# print (likeFruitsList)
-#
+# Output
+print("\n\n\n******************************* SERIES 1 *************************************************************")
+# Display the list.
+print("Your current list of fruit is: ", origList)
+# get user input
+newFruit = input("Please add another fruit to the list. ")
+print("The fruit "+newFruit+" has been added the end of the list, but not saved.\n",
+      AddFruitEndOfList(origList, newFruit))
+fruitNumber = input("Starting from the Left, count the fruit from 1 to n."
+                    "Then enter the number of your 'choice' fruit. ")
+print("Number "+fruitNumber+" is a: ", FruitByIndex(origList,fruitNumber))
+print("The fruit "+newFruit+" has been added to the beginning of the list using a plus sign, but has not been saved.",
+      NewFruitBegin(origList, newFruit))
+print("The fruit "+newFruit+" has been added to the beginning of the list using insert, but has not been saved. ",
+      AddFruitUsingInsert(origList, newFruit))
+print("The following fruits begin with the letter 'p'.\n", ReturnFruitsBeginWithP(origList))
+print("\n\n\n*******************************  SERIES 2  *************************************************************")
+# Display the list
+print(origList)
+# copy the list for series two.
+origListSeries2 = origList
+# remove last item on the list
+origListSeries2.remove('Peaches')
+# Display the list
+print(origListSeries2)
+origListSeries2.remove(input("enter a fruit from the list to remove: "))
+print(origListSeries2)
+print("\n\n\n*******************************  SERIES 3  *************************************************************")
+# creating the like list
+likeFruitsList = origList
+for items in likeFruitsList[:]: # https://docs.python.org/3/reference/compound_stmts.html seen note in 8.3. temp slice!
+    fruitQuestion = input("Do you like, " + items.lower() + " yes/no?")
+    if fruitQuestion.lower() == "no":
+        likeFruitsList.remove(items)
+        continue
+    elif fruitQuestion.lower() == "yes":
+        continue
+    else:
+        print("Not a valid Entry")
+print (likeFruitsList)
 
 print("\n\n\n*******************************  SERIES 4  *************************************************************")
 origList = ['Apples', 'Pears', 'Oranges', 'Peaches']
