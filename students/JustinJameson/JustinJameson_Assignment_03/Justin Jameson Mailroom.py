@@ -16,9 +16,12 @@ import sys  # imports go at the top of the file
 
 #-- Data --#
 # declare variables and constants
-donorTableHeading = ("First Name", "Last Name", "Donation Totals")
+# heading for the table
+donorTableHeading = ("First/Last Name", "Donation Totals", "Other")
+# Include Donor Name, total donated, number of donations, and average donation amount as values in each row.
 listOfDonors = (("Dana Spam", 39, 700500, 0), ("Jay Byrd", 10, 343553235, 0), ("Jo Jo", 6, 2353, 0),
                 ("Kilee Boss", 235235124, 0), ("Katee Pie", 3, 0, 0), ("Ethon George", 25, 23423443, 52352))
+# Sort the List of donors by the first index 1
 sortedListOfDonors = sorted(listOfDonors,key=lambda key2: key2[1])
 
 mainPrompt = "\n".join(("Be grateful you have a job!",
@@ -54,7 +57,7 @@ def Send_a_ThankYou(thankYouPrompt):
         elif response == "2":
             # Show a list of the donor names and re-prompt.
             # TODO: make the list of donors easier to read. Can you call the list from function 'create a report fun'?
-            Creat_A_Report(sortedListOfDonors)
+            Creat_A_Report(donorTableHeading,sortedListOfDonors)
         elif response == "3":
             break
         else:
@@ -80,23 +83,17 @@ def UpdateListOfDonors(seq):
             break
 
 
-def Creat_A_Report(rTable):
+def Creat_A_Report(rHeading, rTable):
     """
     Create a Report
-    1) print a list of your donors, sorted by total historical donation amount.
-    2) Include Donor Name, total donated, number of donations, and average donation amount as values in each row.
-    3) do not print out all of each donor’s donations, just the summary info.
-    4) Using string formatting, format the output rows as nicely as possible. The end result should be
-    tabular (values in each column should align with those above and below).
-    5) After printing this report, return to the original prompt.
-    6) At any point, the user should be able to quit their current task and return to the original prompt."""
+    After printing this report, return to the original prompt.
+    """
+    print(f"|{rHeading[0]:^15}|{rHeading[1]:^15}|{rHeading[2]:^15}|")
     for r in rTable:
-        if r == donorTableHeading:
-            print(f"|{r[0]:^15}|{r[1]:^15}|{r[2]:^15}|")
-        else:
-            print(f"|{r[0]:<15}|{r[1]:<15}|{r[2]:<15}|")
-    # TODO: Sort: I know you said don't use lambda, but I cant figure out the getitem way.
-    #  print(sorted(listOfDonors,key=lambda key2: key2[1]))
+        # print a list of donors summary info, sorted by total historical donation amount.
+        print(f"|{r[0]:<15}|{r[1]:<15}|{r[2]:<15}|")
+    # After printing the report, return to the original prompt.
+    main()
 
 def exit_program():
     print("Thank you for using this program, bye!")
@@ -110,7 +107,7 @@ def main():
         if response == "1":
             Send_a_ThankYou(thankYouPrompt)
         elif response == "2":
-            Creat_A_Report(sortedListOfDonors)
+            Creat_A_Report(donorTableHeading,sortedListOfDonors)
         elif response == "3":
             exit_program()
         else:
