@@ -107,8 +107,6 @@ def test_render_element2():
     # making sure the opening and closing tags are right.
     assert file_contents.startswith("<html>")
     assert file_contents.endswith("</html>")
-
-
 ########
 # Step 2
 ########
@@ -121,16 +119,14 @@ def test_html():
     assert("and this is some more text") in file_contents
     print(file_contents)
     assert file_contents.endswith("</html>")
-
-
 def test_body():
-    e = Body("this is some text")
-    e.append("and this is some more text")
-    file_contents = render_result(e).strip()
-    assert("this is some text") in file_contents
-    assert("and this is some more text") in file_contents
-    assert file_contents.startswith("<body>")
-    assert file_contents.endswith("</body>")
+     e = Body("this is some text")
+     e.append("and this is some more text")
+     file_contents = render_result(e).strip()
+     assert("this is some text") in file_contents
+     assert("and this is some more text") in file_contents
+     assert file_contents.startswith("<body>")
+     assert file_contents.endswith("</body>")
 
 
 def test_p():
@@ -141,8 +137,6 @@ def test_p():
     assert("and this is some more text") in file_contents
     assert file_contents.startswith("<p>")
     assert file_contents.endswith("</p>")
-
-
 def test_sub_element():
     """
     tests that you can add another element and still render properly
@@ -163,10 +157,10 @@ def test_sub_element():
     assert "<p>" in file_contents
     assert "</p>" in file_contents
 
+
 ########
 # Step 3
 ########
-
 def test_Head():
     e = Head("this is some text")
     e.append("and this is some more text")
@@ -178,8 +172,6 @@ def test_Head():
     # making sure there is only one head element
     assert file_contents.count("<head>") == 1
     assert file_contents.count("</head>") == 1
-
-
 def test_title():
     e = Title("This is a Title")
     file_contents = render_result(e).strip()
@@ -191,8 +183,6 @@ def test_title():
     assert file_contents.count("<title>") == 1
     assert file_contents.count("</title>") == 1
     assert "\n" not in file_contents
-
-
 def test_one_line_tag_append():
     """
     You should not be able to append content to a OneLineTag
@@ -200,16 +190,12 @@ def test_one_line_tag_append():
     e = OneLineTag("the initial content")
     with pytest.raises(NotImplementedError):
         e.append("some more content")
-
     file_contents = render_result(e).strip()
     print(file_contents)
-
 def test_attributes():
     e = P("A paragraph of text ", style="text-align: center", id="intro")
-
     file_contents = render_result(e).strip()
     print(file_contents)  # so we can see it if the test fails
-
     # note: The previous tests should make sure that the tags are getting
     #       properly rendered, so we don't need to test that here.
     #       so using only a "P" tag is fine
@@ -217,7 +203,6 @@ def test_attributes():
     # but make sure the embedded element's tags get rendered!
     # first test the end tag is there -- same as always:
     assert file_contents.endswith("</p>")
-
     # but now the opening tag is far more complex
     # but it starts the same:
     assert file_contents.startswith("<p")
@@ -225,7 +210,9 @@ def test_attributes():
     assert 'style="text-align: center"' in file_contents
     assert 'id="intro"' in file_contents
 
+
 # #####################
+# *************************************************************************
 # # indentation testing
 # #  Uncomment for Step 9 -- adding indentation
 # #####################
